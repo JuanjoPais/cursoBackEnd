@@ -13,22 +13,20 @@ class ProductManager {
 
 	addProduct(newProduct) {
 		if (
-			newProduct.title &&
-			newProduct.description &&
-			newProduct.price &&
-			newProduct.thumbnail &&
-			newProduct.code &&
-			newProduct.stock
-		) {
-			let product = this.products.find((prod) => prod.code === newProduct.code);
-
-			if (product)
-				return console.log("Ese código de producto ya fue utilizado");
-
-			return this.products.push({id: this.products.length + 1, ...newProduct});
-		} else {
+			!newProduct.title ||
+			!newProduct.description ||
+			!newProduct.price ||
+			!newProduct.thumbnail ||
+			!newProduct.code ||
+			!newProduct.stock
+		)
 			return console.log("Todos los campos son obligatorios.");
-		}
+
+		let product = this.products.find((prod) => prod.code === newProduct.code);
+
+		if (product) console.log("Ese código de producto ya fue utilizado");
+
+		return this.products.push({id: this.products.length + 1, ...newProduct});
 	}
 
 	getProducts() {
@@ -40,9 +38,8 @@ class ProductManager {
 
 		if (!product) {
 			return console.log("No hay ningún producto asociado a ese id");
-		} else {
-			return product;
 		}
+		return product;
 	}
 }
 
@@ -67,7 +64,7 @@ product.addProduct({
 	stock: 88,
 });
 
-//console.log(product.getProducts());
-//console.log(product.getProductById(1));
-//console.log(product.getProductById(2));
-// console.log(product.getProductById(3));
+/*console.log(product.getProducts());
+console.log(product.getProductById(1));
+console.log(product.getProductById(2));
+console.log(product.getProductById(3));*/
