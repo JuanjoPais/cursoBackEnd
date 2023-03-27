@@ -64,7 +64,7 @@ product.addProduct({
 	stock: 88,
 });
 
-/*console.log(product.getProducts());
-console.log(product.getProductById(1));
-console.log(product.getProductById(2));
-console.log(product.getProductById(3));*/
+//console.log(product.getProducts());
+//console.log(product.getProductById(1));
+//console.log(product.getProductById(2));
+//console.log(product.getProductById(3));
