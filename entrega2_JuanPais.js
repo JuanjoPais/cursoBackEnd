@@ -3,20 +3,14 @@ const fs = require("fs");
 const ruta = "./products.json";
 
 class ProductManager {
-	constructor(title, description, price, thumbnail, code, stock) {
-		this.title = title;
-		this.description = description;
-		this.price = price;
-		this.thumbnail = thumbnail;
-		this.code = code;
-		this.stock = stock;
+	constructor(path) {
 		this.products = [];
 		this.path = ruta;
 	}
 
 	addProduct = async (newProduct) => {
-		this.getProducts();
 		try {
+			this.getProducts();
 			if (
 				!newProduct.title ||
 				!newProduct.description ||
@@ -61,8 +55,8 @@ class ProductManager {
 	};
 
 	getProductById = async (id) => {
-		await this.getProducts();
 		try {
+			await this.getProducts();
 			let prod = this.products.find((prod) => prod.id === id);
 			if (!prod) {
 				return console.log("No hay ningún producto asociado a ese id");
@@ -74,8 +68,8 @@ class ProductManager {
 	};
 
 	deleteProduct = async (idBorrar) => {
-		await this.getProducts();
 		try {
+			await this.getProducts();
 			let prod = this.products.find((prod) => prod.id === idBorrar);
 			if (!prod) {
 				return console.log("No hay ningún producto asociado a ese id");
@@ -90,8 +84,8 @@ class ProductManager {
 	};
 
 	updateProduct = async (id, modif) => {
-		await this.getProducts();
 		try {
+			await this.getProducts();
 			let prod = this.products.find((prod) => prod.id === id);
 			if (!prod) {
 				return console.log("No hay ningún producto asociado a ese id");
@@ -119,7 +113,7 @@ class ProductManager {
 	};
 }
 
-const product = new ProductManager();
+const product = new ProductManager(ruta);
 
 /*product.addProduct({
 	title: "televisor",
@@ -150,8 +144,7 @@ let chequeo = async () => {
 			code: 3,
 		})
 	); */
-	//console.log(await product.deleteProduct(1));
-	//console.log(await producto.getProducts())
+	//console.log(await product.deleteProduct(2));
 	//console.log(await product.getProductById(2));
 };
 chequeo();
