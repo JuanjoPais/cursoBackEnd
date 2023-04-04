@@ -148,3 +148,5 @@ let chequeo = async () => {
 	//console.log(await product.getProductById(2));
 };
 chequeo();
+
+module.export = {ProductManager};
